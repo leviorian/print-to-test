@@ -1,0 +1,73 @@
+public class exampletest {
+
+    //כתבו פונקציה המקבלת מערך מטיפוס מחרוזת ומספר שלם הפעולה תחזיר את מספר המחרוזות במערך שאורכן שווה למספר.
+    public static int exact(String[][] arr, int num) {
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i].length == num) {
+                count += 1;
+            }
+        }
+        System.out.println(count);
+        return count;
+    }
+
+    //כתבו פעולה חיצונית above המקבלת מערך מטיפוס שלמים ומספר שלם נוסף. הפעולה תחזיר את מספר האינדקס הקטן ביותר במערך בו סכום ערכי התאים מתחילת המערך ועד אליו גדול מהמספר שהתקבל לפעולה, אם לא נמנמצא אינדקס מתאים יוחזר -1
+    public static int above(int[] arr, int num) {
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+            if (sum > num) {
+                System.out.println("Index where sum exceeds " + num + ": " + i);
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    //כתבו פונקציה חיצונית המקבלת מערך דו מימדי nxn מטיפוס תווים ובנוסף מחרוזת. הפונקציה תחזיר תשובה בוליאנית האם המחרוזת נמצאת בשורות המטריצה.(תפזורת)
+    public static boolean bingo(char[][] matrix1, String word) {
+        if (matrix1.length < word.length()) {
+            return false;
+        }
+        int len = word.length();
+        int dif = matrix1.length - len;
+        String line = "";
+        for(int i = 0; i < matrix1.length; i++) {
+            for(int j = 0; j < matrix1.length; j++) {
+                line += matrix1[i][j];
+            }
+            for(int k = 0; k < dif ; k++) {
+                int num = k + len;
+                String check = line.substring(k,num);
+                if (check.equals(word)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
+    public static void main(String[] args) {
+        String[][] matrix = {
+                {"a", "aba", "fjidem"},
+                {"vbnj", "vbn", "fghj"},
+                {"hjk", "abc", "fghjikj"}
+        };
+
+        int[][] num_matrix = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+        };
+
+        exact(matrix, 3);
+
+        for (int i = 0; i < num_matrix.length; i++) {
+            above(num_matrix[i], 4);
+        }
+        char[][] matrix1 = {{'a','b','c','d'},{'o','a','r','i'},{'s','i','h','a'}, {'a','d','f','g'}};
+        System.out.println(bingo(matrix1, "ab"));
+    }
+}
