@@ -1,0 +1,199 @@
+import java.util.Scanner;
+import java.util.Random;
+public class less6 {
+
+    public class Main {
+        public static void f1() {
+            int gradesnum = 0;
+            int total = 0;
+            Scanner scanner = new Scanner(System.in);
+            while (gradesnum < 5) {
+                System.out.println("Enter a grade:");
+                int grade = scanner.nextInt();
+                gradesnum += 1;
+                total += grade;
+            }
+            System.out.println("Average: " + (total / 5.0));
+        }
+
+        public static void f2() {
+            int wordCount = 1;
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Enter words. Type 'enter' to finish:");
+            String word = scanner.nextLine();
+            do {
+                wordCount += 1;
+                word = scanner.nextLine();
+            } while (!word.equals("enter"));
+            System.out.println("Number of words entered: " + wordCount);
+        }
+        public static void f3(int num){
+            Scanner scanner = new Scanner(System.in);
+            int attempts=0;
+            do{
+                System.out.println("Enter your 4-digit credit card code:");
+                int code = scanner.nextInt();
+                if (code == num){
+                    System.out.println("how much money?");
+                    return;
+                }else{
+                    System.out.println("error");
+                } attempts+=1;
+            } while(attempts <3);
+        }
+
+        public static void f4(String str) {
+            int size = str.length();
+            int count = 0;
+
+            for (int i = 0; i < size / 2; i++) {
+                if (str.charAt(i) == str.charAt(size - i - 1)) {
+                    count = count + 1;
+                }
+            }
+
+            if (count == size / 2) {
+                System.out.println("The string is a palindrome.");
+            } else {
+                System.out.println("The string is not a palindrome.");
+            }
+        }
+
+        public static void f5(int num) {
+            int i = 1;
+            int times = 0; // how many times num can be divided by i
+            while (i <= num) {
+                if (num % i == 0) {
+                    if (times > 0) {
+                        System.out.print(", ");
+                    }
+                    System.out.println(i);
+                    times += 1;
+                }
+                i += 1;
+            }
+        }
+
+        public static void f6(int size){
+            for (int i = 1; i <= size; i++) {
+                for (int j = 1; j <= size; j++) {
+                    System.out.print(i * j + " ");
+                }
+                System.out.println();
+            }
+        }
+
+        public static void f7(){
+            Scanner scanner = new Scanner(System.in);
+            int Max = 0;
+            int Min = 100;
+            System.out.println("Enter a grade");
+            for (int i=0; i<=6;i++){
+                int Grade=scanner.nextInt();
+                if (Grade>Max){
+                    Max=Grade;
+                }
+                if (Grade<Min){
+                    Min=Grade;
+                }
+            }
+            System.out.println("Max grade is "+Max);
+            System.out.println("Min grade is "+Min);
+        }
+
+        public static int f41(int num1)
+        {
+            int sum=0;
+            while (num1 > 0){
+                sum+=num1%10;
+                num1/=10;
+            }
+            return sum;
+        }
+
+        public static boolean f9(int num) {
+            int a = 0;
+            int b = 1;
+            int sum = 0;
+            while (b < num && num != sum) {
+                sum = a + b;
+                a = b;
+                b = sum;
+            }
+            return num == sum;
+        }
+
+        public static void f10(int num1, int num2) {
+            int result=0;
+            for (int i = 0; i < num2; i++) {
+                result += num1;
+            }
+            System.out.println(result);
+        }
+
+        public static void f11(int num) {
+            for (int i = 0; i < num; i++) {
+                for (int j = 0; j < num - i - 1; j++) {
+                    System.out.print(" ");
+                }
+                for (int k = 0; k <= i; k++) {
+                    System.out.print("* ");
+                }
+                System.out.println();
+            }
+        }
+
+        public static void f14(int num1, int num2){
+            int a = 1;
+            int b = 1;
+            for (int i = 0; i < num2; i++) {
+                if (i >= num1 - 1 && i < num2 - 1) {
+                    System.out.print(a + ",");
+                }
+                int sum = a + b;
+                a = b;
+                b = sum;
+            }
+        }
+        public static void f15(int num){
+            System.out.println(" ");
+            for (int i = 1; i <= num; i++) {
+                for (int j = num - i; j > 0; j--) {
+                    System.out.print("  ");
+                }
+                for (int k = 1; k <= (2 * i); k++) {
+                    System.out.print("* ");
+                }
+                System.out.println();
+            }
+        }
+
+        public static void f17(double keren, double months) {
+            double ribit = 0.5;
+            double sum = 0;
+
+            for (int i = 0; i < months; i++) {
+                sum = (keren / months) + (ribit * keren / 100);
+                keren = keren - sum;
+                System.out.println(sum);
+            }
+        }
+
+        public static void main(String[] args) {
+            f1();
+            f2();
+            f3(1234);
+            f5(24);
+            f4("abcba");
+            f6(10);
+            f7();
+            System.out.println(f41(123456));
+            System.out.println(f9(13));
+            f10(26,31);
+            f11(5);
+            f14(5,9);
+            f17(1000,12);
+        }
+    }
+
+}
